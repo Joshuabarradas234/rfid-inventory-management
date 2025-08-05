@@ -236,7 +236,4 @@ At 06:36 UTC, this CloudWatch panel shows overall protocol success and a process
 ![Figure 13](Figure%2013.png)
 
 
-## Contact
-
-For any questions, feedback, or collaboration opportunities, please connect with me on [LinkedIn](https://www.linkedin.com/in/joshua-barradas-433292212/)
 

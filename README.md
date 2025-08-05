@@ -214,6 +214,61 @@ rfid-inventory-management/
 
 └── README.md # Project README (this file)
 
+\## 📊 Visual Architecture & Monitoring
+
+\### Figure 1: RFID Inventory System Architecture (AWS-based)
+
+!\[Figure 1\](Figure%201.png)
+
+\### Figure 2A: AWS IoT Core and Lambda Data Pipeline
+
+!\[Figure 2\](Figure%202.png)
+
+\### Figure 3A: AWS to SAP AII Integration Workflow
+
+!\[Figure 3\](Figure%203.png)
+
+\### Figure 4A: Scalability and Failover Testing Setup
+
+!\[Figure 4\](Figure%204.png)
+
+\### Figure 5A: CloudWatch Metrics Dashboard
+
+!\[Figure 5\](Figure%205.png)
+
+\### Figure 6A: DynamoDB Table Schema View
+
+!\[Figure 6\](Figure%206.png)
+
+\### Figure 7A: IoT Core Rule Setup
+
+!\[Figure 7\](Figure%207.png)
+
+\### Figure 8A: QuickSight Analytics Dashboard
+
+!\[Figure 8\](Figure%208.png)
+
+\### Figure 9A: CloudWatch – Event Logs Summary
+
+!\[Figure 9\](Figure%209.png)
+
+\### Figure 10A: CloudWatch – Subscription and Publish Events
+
+!\[Figure 10\](Figure%2010.png)
+
+\### Figure 11A: CloudWatch – Detailed Metrics at 06:35 UTC
+
+!\[Figure 11\](Figure%2011.png)
+
+\### Figure 12A: CloudWatch – TopicMatch Execution at 06:40 UTC
+
+!\[Figure 12\](Figure%2012.png)
+
+\### Figure 13A: CloudWatch – Protocol Success (1.04s Latency)
+
+!\[Figure 13\](Figure%2013.png)
+
+
 **Contact**
 
 For any questions, feedback, or collaboration opportunities, please connect with me on [LinkedIn](https://www.linkedin.com/in/yourprofile) 

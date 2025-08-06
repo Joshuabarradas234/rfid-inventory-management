@@ -235,6 +235,7 @@ This view captures the AWS IoT rule (ProcessRFIDMessages) triggering the Lambda 
 At 06:36 UTC, this CloudWatch panel shows overall protocol success and a processing latency of 1.04 seconds in the IoT → Lambda → DynamoDB pipeline, demonstrating the system’s responsiveness.  
 ![Figure 13](Figure%2013.png)
 
+
 ## Contact  
 For questions, feedback, or collaboration, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/joshua-barradas-433292212/)
 

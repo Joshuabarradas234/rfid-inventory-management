@@ -181,60 +181,59 @@ rfid-inventory-management/
 └── README.md        # Project README
 ```
 
-## 📊 Visual Architecture & Monitoring
+## ### 📊 Visual Architecture & Monitoring
 
-### Figure 1: RFID Inventory System Architecture (AWS-based)
+**Figure 1: RFID Inventory System Architecture (AWS-based)**  
 Shows data flow from RFID tags to IoT Core, Lambda, DynamoDB, and SAP.  
 ![Figure 1](Figure%201.png)
 
-### Figure 2: AWS IoT Core and Lambda Data Pipeline
+**Figure 2: AWS IoT Core and Lambda Data Pipeline**  
 Visualizes how MQTT messages from RFID readers are routed to Lambda.  
 ![Figure 2](Figure%202.png)
 
-### Figure 3: AWS to SAP AII Integration Workflow
+**Figure 3: AWS to SAP AII Integration Workflow**  
 Shows how processed inventory data flows from AWS to SAP Auto-ID Infrastructure (AII) by converting IoT events into SAP IDocs and sending them via OData.  
 ![Figure 3](Figure%203.png)
 
-### Figure 4: Scalability and Failover Testing Setup
-Illustrates the test environment with simulated RFID devices, load testing tools, and monitoring components used to evaluate system performance under stress.  
+**Figure 4: Scalability and Failover Testing Setup**  
+Illustrates the test environment with simulated RFID devices, load testing tools, and monitoring components.  
 ![Figure 4](Figure%204.png)
 
-### Figure 5: CloudWatch Metrics Dashboard
-Displays a sample Amazon CloudWatch dashboard with real-time metrics including IoT message throughput, Lambda invocations, DynamoDB capacity usage, and API latency—helping detect system bottlenecks and anomalies.  
+**Figure 5: CloudWatch Metrics Dashboard**  
+Displays real-time IoT throughput, Lambda invocations, DynamoDB usage, and API latency.  
 ![Figure 5](Figure%205.png)
 
-### Figure 6: DynamoDB Table Schema View
-Shows the table schema and sample entries, including primary key (item_id), secondary indexes (e.g., expiry_date), and attributes—illustrating how inventory data is structured for fast queries and SAP integration.  
+**Figure 6: DynamoDB Table Schema View**  
+Shows how inventory data is structured with item_id, expiry_date, and SAP integration fields.  
 ![Figure 6](Figure%206.png)
 
-### Figure 7: IoT Core Rule Setup
-Displays the AWS IoT Core rule that routes rfid/scan messages to the processing Lambda. Highlights the SQL-based filter used to validate payloads before triggering the function.  
+**Figure 7: IoT Core Rule Setup**  
+Highlights the SQL-based IoT rule that routes scans to Lambda.  
 ![Figure 7](Figure%207.png)
 
-### Figure 8: QuickSight Analytics Dashboard
-Visualizes inventory metrics such as items near expiry, top-selling SKUs, and scan frequency by location. Supports data-driven restocking and promotion planning.  
+**Figure 8: QuickSight Analytics Dashboard**  
+Displays top-selling SKUs, items near expiry, and scan trends.  
 ![Figure 8](Figure%208.png)
 
-### Figure 9: CloudWatch Dashboard – Event Logs Summary
-Highlights system event logs for IoT and Lambda operations, confirming real-time ingestion and processing with minimal latency across the full pipeline.  
+**Figure 9: CloudWatch – Event Logs Summary**  
+Confirms real-time ingestion and minimal latency.  
 ![Figure 9](Figure%209.png)
 
-### Figure 10: CloudWatch Dashboard – Subscription and Publish Events
-Tracks successful MQTT subscriptions and publishes in the simulation environment, confirming reliable message delivery from devices through AWS IoT Core to Lambda.  
+**Figure 10: CloudWatch – MQTT Subscriptions**  
+Tracks successful MQTT event delivery to Lambda.  
 ![Figure 10](Figure%2010.png)
 
-### Figure 11: CloudWatch Dashboard – Detailed Metrics at 06:35 UTC
-Snapshot shows a burst of activity at 06:35 UTC, with a performance metric of ~0.979 confirming sub-second processing latency and timely alert triggering via Lambda/SNS.  
+**Figure 11: CloudWatch – Detailed Metrics (06:35 UTC)**  
+Shows burst load with ~0.979s latency and Lambda/SNS alerts.  
 ![Figure 11](Figure%2011.png)
 
-### Figure 12: CloudWatch Dashboard – TopicMatch Execution at 06:40 UTC
-This view captures the AWS IoT rule (ProcessRFIDMessages) triggering the Lambda function at 06:40 UTC. It confirms real-time event processing and subsequent SNS alerting for that inventory update.  
+**Figure 12: CloudWatch – TopicMatch Execution (06:40 UTC)**  
+AWS IoT rule triggers Lambda in real time.  
 ![Figure 12](Figure%2012.png)
 
-### Figure 13: CloudWatch Dashboard – Protocol Success Overview (1.04 Latency)
-At 06:36 UTC, this CloudWatch panel shows overall protocol success and a processing latency of 1.04 seconds in the IoT → Lambda → DynamoDB pipeline, demonstrating the system’s responsiveness.  
+**Figure 13: CloudWatch – Protocol Success Overview (1.04s)**  
+Latency confirmation for full pipeline: IoT → Lambda → DynamoDB.  
 ![Figure 13](Figure%2013.png)
-
 
 ## Contact  
 For questions, feedback, or collaboration, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/joshua-barradas-433292212/)

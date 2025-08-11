@@ -1,0 +1,5 @@
+# Runtime dependencies
+boto3
+
+# Development and testing dependencies
+pytest

@@ -77,9 +77,12 @@ This project implements a real-time inventory management system using RFID, IoT,
 {
   "item_id": "ITEM_001",
   "expiry_date": "2025-03-15T12:00:00Z",
-  "location": "Shelf_A1"
+ "location": "Shelf_A1",
+  "device_id": "READER_42",
+  "timestamp": "2024-05-01T08:30:00Z"
 }
 ```
+See [docs/payloads.md](docs/payloads.md) for field descriptions.
 
 ## Lambda Function Snippets
 
@@ -94,12 +97,16 @@ def lambda_handler(event, context):
        item_id = event.get('item_id')
         expiry_date = event.get('expiry_date')
         location = event.get('location')
+        device_id = event['device_id']
+        timestamp = event['timestamp']
         if not all([item_id, expiry_date, location]):
             raise ValueError("Missing required fields in event")
         table.put_item(Item={
             'item_id': item_id,
             'expiry_date': expiry_date,
-            'location': location
+            'location': location,
+            'device_id': device_id,
+            'timestamp': timestamp
         })
         return {'statusCode': 200, 'body': 'Scan recorded'}
     except Exception as e:

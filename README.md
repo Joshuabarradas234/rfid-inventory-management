@@ -254,6 +254,9 @@ AWS IoT rule triggers Lambda in real time.
 Latency confirmation for full pipeline: IoT → Lambda → DynamoDB.  
 ![Figure 13](docs/Figure%2013.png)
 
+## License
+This project is licensed under the [MIT License](LICENSE).
+
 ## Contact  
 For questions, feedback, or collaboration, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/joshua-barradas-433292212/)
 

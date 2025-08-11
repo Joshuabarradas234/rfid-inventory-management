@@ -190,6 +190,16 @@ rfid-inventory-management/
 └── README.md        # Project README
 ```
 
+## Running Tests
+
+Unit tests are implemented with [pytest](https://pytest.org). From the repository root, run:
+
+```
+pytest
+```
+
+The suite covers the Lambda DynamoDB handler and the IoT simulator sample publisher.
+
 ## 📊 Visual Architecture & Monitoring
 
 **Figure 1: RFID Inventory System Architecture (AWS-based)**  

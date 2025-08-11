@@ -21,6 +21,8 @@ RFID-Based Inventory Management System (AWS-Centric)
 * [Cost Estimates](#cost-estimates)
 * [Future Enhancements](#future-enhancements)
 * [Repository Structure](#repository-structure)
+* [Setup](#setup)
+* [Running Tests](#running-tests)
 * [📊 Visual Architecture & Monitoring](#-visual-architecture--monitoring)
 * [Contact](#contact)
 
@@ -190,9 +192,17 @@ rfid-inventory-management/
 └── README.md        # Project README
 ```
 
+## Setup
+
+Install the runtime and test dependencies:
+
+```bash
+pip install -r requirements.txt
+```
+
 ## Running Tests
 
-Unit tests are implemented with [pytest](https://pytest.org). From the repository root, run:
+Unit tests are implemented with [pytest](https://pytest.org). After installing the dependencies, run:
 
 ```
 pytest

@@ -91,9 +91,11 @@ def lambda_handler(event, context):
     dynamodb = boto3.resource('dynamodb')
     table = dynamodb.Table('Inventory')
     try:
-        item_id = event['item_id']
-        expiry_date = event['expiry_date']
-        location = event['location']
+       item_id = event.get('item_id')
+        expiry_date = event.get('expiry_date')
+        location = event.get('location')
+        if not all([item_id, expiry_date, location]):
+            raise ValueError("Missing required fields in event")
         table.put_item(Item={
             'item_id': item_id,
             'expiry_date': expiry_date,

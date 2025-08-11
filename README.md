@@ -20,7 +20,7 @@ RFID-Based Inventory Management System (AWS-Centric)
 * [Compliance & Risk Handling](#compliance--risk-handling)
 * [Cost Estimates](#cost-estimates)
 * [Future Enhancements](#future-enhancements)
-* [Suggested Repository Structure](#suggested-repository-structure)
+* [Repository Structure](#repository-structure)
 * [📊 Visual Architecture & Monitoring](#-visual-architecture--monitoring)
 * [Contact](#contact)
 
@@ -169,7 +169,7 @@ Alerts are triggered if performance thresholds are breached.
 * Mobile apps for staff scanning
 * Automated SAP-triggered restocking
 
-## Suggested Repository Structure
+## Repository Structure
 
 ```
 rfid-inventory-management/
@@ -181,59 +181,59 @@ rfid-inventory-management/
 └── README.md        # Project README
 ```
 
-## ### 📊 Visual Architecture & Monitoring
+## 📊 Visual Architecture & Monitoring
 
 **Figure 1: RFID Inventory System Architecture (AWS-based)**  
 Shows data flow from RFID tags to IoT Core, Lambda, DynamoDB, and SAP.  
-![Figure 1](Figure%201.png)
+![Figure 1](docs/Figure%201.png)
 
 **Figure 2: AWS IoT Core and Lambda Data Pipeline**  
 Visualizes how MQTT messages from RFID readers are routed to Lambda.  
-![Figure 2](Figure%202.png)
-
+![Figure 2](docs/Figure%202.png)
 **Figure 3: AWS to SAP AII Integration Workflow**  
 Shows how processed inventory data flows from AWS to SAP Auto-ID Infrastructure (AII) by converting IoT events into SAP IDocs and sending them via OData.  
-![Figure 3](Figure%203.png)
+![Figure 3](docs/Figure%203.png)
 
 **Figure 4: Scalability and Failover Testing Setup**  
 Illustrates the test environment with simulated RFID devices, load testing tools, and monitoring components.  
-![Figure 4](Figure%204.png)
+![Figure 4](docs/Figure%204.png)
 
 **Figure 5: CloudWatch Metrics Dashboard**  
 Displays real-time IoT throughput, Lambda invocations, DynamoDB usage, and API latency.  
-![Figure 5](Figure%205.png)
+![Figure 5](docs/Figure%205.png)
 
 **Figure 6: DynamoDB Table Schema View**  
 Shows how inventory data is structured with item_id, expiry_date, and SAP integration fields.  
-![Figure 6](Figure%206.png)
+![Figure 6](docs/Figure%206.png)
+
 
 **Figure 7: IoT Core Rule Setup**  
 Highlights the SQL-based IoT rule that routes scans to Lambda.  
-![Figure 7](Figure%207.png)
+![Figure 7](docs/Figure%207.png)
 
 **Figure 8: QuickSight Analytics Dashboard**  
 Displays top-selling SKUs, items near expiry, and scan trends.  
-![Figure 8](Figure%208.png)
+![Figure 8](docs/Figure%208.png)
 
 **Figure 9: CloudWatch – Event Logs Summary**  
 Confirms real-time ingestion and minimal latency.  
-![Figure 9](Figure%209.png)
+![Figure 9](docs/Figure%209.png)
 
 **Figure 10: CloudWatch – MQTT Subscriptions**  
 Tracks successful MQTT event delivery to Lambda.  
-![Figure 10](Figure%2010.png)
+![Figure 10](docs/Figure%2010.png)
 
 **Figure 11: CloudWatch – Detailed Metrics (06:35 UTC)**  
 Shows burst load with ~0.979s latency and Lambda/SNS alerts.  
-![Figure 11](Figure%2011.png)
+![Figure 11](docs/Figure%2011.png)
 
 **Figure 12: CloudWatch – TopicMatch Execution (06:40 UTC)**  
 AWS IoT rule triggers Lambda in real time.  
-![Figure 12](Figure%2012.png)
+![Figure 12](docs/Figure%2012.png)
 
 **Figure 13: CloudWatch – Protocol Success Overview (1.04s)**  
 Latency confirmation for full pipeline: IoT → Lambda → DynamoDB.  
-![Figure 13](Figure%2013.png)
+![Figure 13](docs/Figure%2013.png)
 
 ## Contact  
 For questions, feedback, or collaboration, feel free to connect with me on [LinkedIn](https://www.linkedin.com/in/joshua-barradas-433292212/)

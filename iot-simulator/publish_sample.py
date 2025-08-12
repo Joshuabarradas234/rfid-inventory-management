@@ -1,11 +1,28 @@
 import json
+import os
 import random
 from datetime import datetime
+from pathlib import Path
 
 import boto3
 
-IOT_TOPIC = "rfid/scan"
 
+def _get_setting(name: str, default: str) -> str:
+    """Return configuration value from environment or config file."""
+    if name in os.environ:
+        return os.environ[name]
+    config_path = Path(__file__).resolve().parents[1] / "config.json"
+    if config_path.exists():
+        try:
+            with config_path.open() as f:  # pragma: no cover - file access
+                data = json.load(f)
+            return data.get(name, default)
+        except Exception:  # pragma: no cover - optional
+            pass
+    return default
+
+
+IOT_TOPIC = _get_setting("IOT_TOPIC", "rfid/scan")
 
 def build_payload() -> dict:
     return {
@@ -20,7 +37,8 @@ def build_payload() -> dict:
 def main() -> None:
     client = boto3.client("iot-data")
     payload = build_payload()
-    client.publish(topic=IOT_TOPIC, qos=1, payload=json.dumps(payload))
+     topic = _get_setting("IOT_TOPIC", IOT_TOPIC)
+    client.publish(topic=topic, qos=1, payload=json.dumps(payload))
     print("Published payload:", payload)
 
 

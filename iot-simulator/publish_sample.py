@@ -43,7 +43,7 @@ def build_payload() -> dict:
 def main() -> None:
     client = boto3.client("iot-data")
     payload = build_payload()
-     topic = _get_setting("IOT_TOPIC", IOT_TOPIC)
+    topic = IOT_TOPIC
     try:
         client.publish(topic=topic, qos=1, payload=json.dumps(payload))
         print("Published payload:", payload)

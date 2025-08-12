@@ -1,12 +1,30 @@
 """Lambda function to persist RFID scan events to DynamoDB."""
 
+import json
 import os
 from datetime import datetime
+from pathlib import Path
 from typing import Any, Dict
 
 import boto3
 
-TABLE_NAME = os.environ.get("TABLE_NAME", "Inventory")
+
+def _get_setting(name: str, default: str) -> str:
+    """Return configuration value from environment or config file."""
+    if name in os.environ:
+        return os.environ[name]
+    config_path = Path(__file__).resolve().parents[1] / "config.json"
+    if config_path.exists():
+        try:
+            with config_path.open() as f:  # pragma: no cover - file access
+                data = json.load(f)
+            return data.get(name, default)
+        except Exception:  # pragma: no cover - optional
+            pass
+    return default
+
+
+TABLE_NAME = _get_setting("TABLE_NAME", "Inventory")
 REQUIRED_FIELDS = [
     "item_id",
     "expiry_date",

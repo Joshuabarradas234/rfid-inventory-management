@@ -53,19 +53,8 @@ Resources:
         Variables:
           TABLE_NAME: !Ref InventoryTable
           ALERT_TOPIC_ARN: !Ref InventoryAlertsTopic
-      Code:
-        ZipFile: |
-          import json
-          import os
-          import boto3
-          dynamodb = boto3.resource('dynamodb')
-          sns = boto3.client('sns')
-          table = dynamodb.Table(os.environ['TABLE_NAME'])
-          def handler(event, context):
-              item = json.loads(event['body']) if 'body' in event else event
-              table.put_item(Item=item)
-              sns.publish(TopicArn=os.environ['ALERT_TOPIC_ARN'], Message=json.dumps(item))
-              return {'statusCode': 200, 'body': 'ok'}
+      S3Bucket: !Ref LambdaS3Bucket
+        S3Key: !Ref LambdaS3Key
 
   ProcessScanPermission:
     Type: AWS::Lambda::Permission

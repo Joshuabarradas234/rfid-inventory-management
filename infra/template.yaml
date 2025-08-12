@@ -38,9 +38,17 @@ Resources:
             Action: sts:AssumeRole
       ManagedPolicyArns:
         - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
-        - arn:aws:iam::aws:policy/AmazonSNSFullAccess
-
+         Policies:
+        - PolicyName: ProcessScanPolicy
+          PolicyDocument:
+            Version: '2012-10-17'
+            Statement:
+              - Effect: Allow
+                Action: dynamodb:PutItem
+                Resource: !GetAtt InventoryTable.Arn
+              - Effect: Allow
+                Action: sns:Publish
+                Resource: !Ref InventoryAlertsTopic
   ProcessScanFunction:
     Type: AWS::Lambda::Function
     Properties:

@@ -9,7 +9,8 @@ import pytest
 sys.modules["boto3"] = types.SimpleNamespace(client=lambda service: None)
 
 spec = importlib.util.spec_from_file_location(
-    "publish_sample", Path(__file__).resolve().parents[1] / "iot-simulator" / "publish_sample.py"
+    "publish_sample",
+    Path(__file__).resolve().parents[1] / "iot-simulator" / "publish_sample.py",
 )
 publish_sample = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(publish_sample)

@@ -1,6 +1,13 @@
 AWSTemplateFormatVersion: '2010-09-09'
 Description: Infrastructure for RFID inventory management demo
-
+Parameters:
+  LambdaS3Bucket:
+    Type: String
+    Description: S3 bucket containing the Lambda deployment package
+  LambdaS3Key:
+    Type: String
+    Default: process_scan.zip
+    Description: S3 key for the Lambda deployment package
 Resources:
   InventoryTable:
     Type: AWS::DynamoDB::Table

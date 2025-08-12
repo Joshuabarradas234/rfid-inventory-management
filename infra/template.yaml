@@ -1,0 +1,81 @@
+AWSTemplateFormatVersion: '2010-09-09'
+Description: Infrastructure for RFID inventory management demo
+
+Resources:
+  InventoryTable:
+    Type: AWS::DynamoDB::Table
+    Properties:
+      TableName: Inventory
+      BillingMode: PAY_PER_REQUEST
+      AttributeDefinitions:
+        - AttributeName: item_id
+          AttributeType: S
+      KeySchema:
+        - AttributeName: item_id
+          KeyType: HASH
+
+  InventoryAlertsTopic:
+    Type: AWS::SNS::Topic
+    Properties:
+      TopicName: InventoryAlerts
+
+  ProcessScanRole:
+    Type: AWS::IAM::Role
+    Properties:
+      AssumeRolePolicyDocument:
+        Version: '2012-10-17'
+        Statement:
+          - Effect: Allow
+            Principal:
+              Service: lambda.amazonaws.com
+            Action: sts:AssumeRole
+      ManagedPolicyArns:
+        - arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+        - arn:aws:iam::aws:policy/AmazonDynamoDBFullAccess
+        - arn:aws:iam::aws:policy/AmazonSNSFullAccess
+
+  ProcessScanFunction:
+    Type: AWS::Lambda::Function
+    Properties:
+      FunctionName: ProcessScan
+      Runtime: python3.9
+      Handler: index.handler
+      Role: !GetAtt ProcessScanRole.Arn
+      Timeout: 30
+      Environment:
+        Variables:
+          TABLE_NAME: !Ref InventoryTable
+          ALERT_TOPIC_ARN: !Ref InventoryAlertsTopic
+      Code:
+        ZipFile: |
+          import json
+          import os
+          import boto3
+          dynamodb = boto3.resource('dynamodb')
+          sns = boto3.client('sns')
+          table = dynamodb.Table(os.environ['TABLE_NAME'])
+          def handler(event, context):
+              item = json.loads(event['body']) if 'body' in event else event
+              table.put_item(Item=item)
+              sns.publish(TopicArn=os.environ['ALERT_TOPIC_ARN'], Message=json.dumps(item))
+              return {'statusCode': 200, 'body': 'ok'}
+
+  ProcessScanPermission:
+    Type: AWS::Lambda::Permission
+    Properties:
+      Action: lambda:InvokeFunction
+      FunctionName: !Ref ProcessScanFunction
+      Principal: iot.amazonaws.com
+      SourceArn: !Sub "arn:aws:iot:${AWS::Region}:${AWS::AccountId}:rule/ProcessScanRule"
+
+  ScanTopicRule:
+    Type: AWS::IoT::TopicRule
+    Properties:
+      RuleName: ProcessScanRule
+      TopicRulePayload:
+        Sql: "SELECT * FROM 'rfid/scan'"
+        AwsIotSqlVersion: 2016-03-23
+        Actions:
+          - Lambda:
+              FunctionArn: !GetAtt ProcessScanFunction.Arn
+        RuleDisabled: false

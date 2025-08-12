@@ -1,10 +1,15 @@
 import json
 import os
+import logging
 import random
 from datetime import datetime
 from pathlib import Path
 
 import boto3
+from botocore.exceptions import BotoCoreError, ClientError
+
+logging.basicConfig(level=logging.INFO)
+logger = logging.getLogger(__name__)
 
 
 def _get_setting(name: str, default: str) -> str:
@@ -37,10 +42,14 @@ def build_payload() -> dict:
 def main() -> None:
     client = boto3.client("iot-data")
     payload = build_payload()
-     topic = _get_setting("IOT_TOPIC", IOT_TOPIC)
-    client.publish(topic=topic, qos=1, payload=json.dumps(payload))
-    print("Published payload:", payload)
-
-
+     try:
+        client.publish(topic=IOT_TOPIC, qos=1, payload=json.dumps(payload))
+        print("Published payload:", payload)
+    except (BotoCoreError, ClientError) as exc:
+        logger.error("boto3 publish failed: %s", exc)
+        raise
+    except Exception as exc:  # pragma: no cover - fallback
+        logger.error("Unexpected error publishing payload: %s", exc)
+        raise
 if __name__ == "__main__":
     main()

@@ -185,11 +185,13 @@ Alerts are triggered if performance thresholds are breached.
 
 ```
 rfid-inventory-management/
-├── docs/            # Diagrams, reports
+├── docs/            # Diagrams, reports, figures
 ├── lambda/          # Lambda function code
 ├── iot-simulator/   # Simulation scripts
 ├── quicksight/      # Dashboard definitions
 ├── compliance/      # POPIA, ICASA docs
+├── tests/           # Unit tests
+├── requirements.txt # Python dependencies
 └── README.md        # Project README
 ```
 

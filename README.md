@@ -76,13 +76,19 @@ This project implements a real-time inventory management system using RFID, IoT,
 
 ### CloudFormation Deployment
 
-Deploy the core infrastructure using the provided template:
+Build the Lambda package and deploy the core infrastructure:
 
 ```bash
+Package the Lambda code
+zip -j process_scan.zip lambda/process_scan/*
+aws s3 cp process_scan.zip s3://<your-bucket>/
+
+# Deploy the stack
 aws cloudformation deploy \
   --template-file infra/template.yaml \
   --stack-name rfid-infra \
-  --capabilities CAPABILITY_IAM
+ --capabilities CAPABILITY_IAM \
+  --parameter-overrides LambdaS3Bucket=<your-bucket>
 ```
 
 To remove the stack when finished:

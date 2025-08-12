@@ -74,6 +74,22 @@ This project implements a real-time inventory management system using RFID, IoT,
 5. **QuickSight:** Create datasets and dashboards.
 6. **Monitoring:** Use CloudWatch to verify performance.
 
+### CloudFormation Deployment
+
+Deploy the core infrastructure using the provided template:
+
+```bash
+aws cloudformation deploy \
+  --template-file infra/template.yaml \
+  --stack-name rfid-infra \
+  --capabilities CAPABILITY_IAM
+```
+
+To remove the stack when finished:
+
+```bash
+aws cloudformation delete-stack --stack-name rfid-infra
+```
 ## Sample Payload (JSON)
 
 ```json

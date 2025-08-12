@@ -64,3 +64,18 @@ def test_main_publish_failure(monkeypatch):
     monkeypatch.setattr(publish_sample.boto3, "client", fake_client)
     with pytest.raises(RuntimeError):
         publish_sample.main()
+
+def test_main_uses_env_topic(monkeypatch):
+    published = {}
+
+    class DummyClient:
+        def publish(self, topic, qos, payload):
+            published["topic"] = topic
+
+    def fake_client(service):
+        return DummyClient()
+
+    monkeypatch.setattr(publish_sample.boto3, "client", fake_client)
+    monkeypatch.setenv("IOT_TOPIC", "custom/topic")
+    publish_sample.main()
+    assert published["topic"] == "custom/topic"

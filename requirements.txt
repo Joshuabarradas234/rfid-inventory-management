@@ -2,4 +2,7 @@
 boto3
 
 # Development and testing dependencies
+black
+flake8
+mypy
 pytest

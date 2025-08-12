@@ -34,7 +34,7 @@ This project implements a real-time inventory management system using RFID, IoT,
 ## Architecture Diagram
 
 **Figure 1:** RFID Inventory System Architecture (AWS-based). Shows flow of data from RFID devices through AWS IoT Core, AWS Lambda, DynamoDB, and SAP.
-
+https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%201.png?raw=true
 ## AWS Services Used
 
 * **AWS IoT Core:** Handles MQTT message ingestion.

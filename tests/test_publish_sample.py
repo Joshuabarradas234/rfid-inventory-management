@@ -65,6 +65,7 @@ def test_main_publish_failure(monkeypatch):
     with pytest.raises(RuntimeError):
         publish_sample.main()
 
+
 def test_main_uses_env_topic(monkeypatch):
     published = {}
 

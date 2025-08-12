@@ -1,8 +1,2 @@
 # Runtime dependencies
-boto3
-
-# Development and testing dependencies
-black
-flake8
-mypy
-pytest
+boto3==1.40.7

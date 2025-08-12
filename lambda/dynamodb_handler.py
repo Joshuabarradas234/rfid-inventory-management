@@ -51,12 +51,13 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     # Validate timestamp format
     try:
         datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
-        except ValueError as exc:
-            logger.warning("Timestamp validation failed: %s", exc)
+          except ValueError as exc:
+        logger.warning("Timestamp validation failed: %s", exc)
         return {"statusCode": 400, "body": str(exc)}
 
     item = {field: event[field] for field in REQUIRED_FIELDS}
-        
+
+
     global table
     if table is None:
         try:

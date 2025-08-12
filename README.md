@@ -1,5 +1,6 @@
 RFID-Based Inventory Management System (AWS-Centric)
 
+[![CI](https://github.com/OWNER/rfid-inventory-management/actions/workflows/ci.yml/badge.svg)](https://github.com/OWNER/rfid-inventory-management/actions/workflows/ci.yml)
 ![AWS](https://img.shields.io/badge/AWS-IoT%20Core-orange?logo=amazon-aws)
 ![Python](https://img.shields.io/badge/Language-Python-blue?logo=python)
 ![License](https://img.shields.io/badge/License-MIT-green)

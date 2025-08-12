@@ -258,55 +258,56 @@ The suite covers the Lambda DynamoDB handler and the IoT simulator sample publis
 
 **Figure 1: RFID Inventory System Architecture (AWS-based)**  
 Shows data flow from RFID tags to IoT Core, Lambda, DynamoDB, and SAP.  
-![Figure 1](docs/Figure%201.png)
+![Figure 1](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%201.png?raw=true)
 
 **Figure 2: AWS IoT Core and Lambda Data Pipeline**  
 Visualizes how MQTT messages from RFID readers are routed to Lambda.  
-![Figure 2](docs/Figure%202.png)
+![Figure 2](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%202.png?raw=true)
+
 **Figure 3: AWS to SAP AII Integration Workflow**  
 Shows how processed inventory data flows from AWS to SAP Auto-ID Infrastructure (AII) by converting IoT events into SAP IDocs and sending them via OData.  
-![Figure 3](docs/Figure%203.png)
+![Figure 3](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%203.png?raw=true)
 
 **Figure 4: Scalability and Failover Testing Setup**  
 Illustrates the test environment with simulated RFID devices, load testing tools, and monitoring components.  
-![Figure 4](docs/Figure%204.png)
+![Figure 4](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%204.png?raw=true)
 
 **Figure 5: CloudWatch Metrics Dashboard**  
 Displays real-time IoT throughput, Lambda invocations, DynamoDB usage, and API latency.  
-![Figure 5](docs/Figure%205.png)
+![Figure 5](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%205.png?raw=true)
 
 **Figure 6: DynamoDB Table Schema View**  
 Shows how inventory data is structured with item_id, expiry_date, and SAP integration fields.  
-![Figure 6](docs/Figure%206.png)
+![Figure 6](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%206.png?raw=true)
 
 
 **Figure 7: IoT Core Rule Setup**  
 Highlights the SQL-based IoT rule that routes scans to Lambda.  
-![Figure 7](docs/Figure%207.png)
+![Figure 7](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%207.png?raw=true)
 
 **Figure 8: QuickSight Analytics Dashboard**  
 Displays top-selling SKUs, items near expiry, and scan trends.  
-![Figure 8](docs/Figure%208.png)
+![Figure 8](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%208.png?raw=true)
 
 **Figure 9: CloudWatch – Event Logs Summary**  
 Confirms real-time ingestion and minimal latency.  
-![Figure 9](docs/Figure%209.png)
+![Figure 9](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%209.png?raw=true)
 
 **Figure 10: CloudWatch – MQTT Subscriptions**  
 Tracks successful MQTT event delivery to Lambda.  
-![Figure 10](docs/Figure%2010.png)
+![Figure 10](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%2010.png?raw=true)
 
 **Figure 11: CloudWatch – Detailed Metrics (06:35 UTC)**  
 Shows burst load with ~0.979s latency and Lambda/SNS alerts.  
-![Figure 11](docs/Figure%2011.png)
+![Figure 11](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%2011.png?raw=true)
 
 **Figure 12: CloudWatch – TopicMatch Execution (06:40 UTC)**  
 AWS IoT rule triggers Lambda in real time.  
-![Figure 12](docs/Figure%2012.png)
+![Figure 12](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%2012.png?raw=true)
 
 **Figure 13: CloudWatch – Protocol Success Overview (1.04s)**  
 Latency confirmation for full pipeline: IoT → Lambda → DynamoDB.  
-![Figure 13](docs/Figure%2013.png)
+![Figure 13](https://github.com/Joshuabarradas234/rfid-inventory-management/blob/main/Figure%2013.png?raw=true)
 
 ## License
 This project is licensed under the [MIT License](LICENSE).

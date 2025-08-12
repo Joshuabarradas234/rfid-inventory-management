@@ -203,6 +203,27 @@ Install the runtime dependencies:
 pip install -r requirements.txt
 ```
 
+## Configuration
+
+Settings are read from environment variables or an optional `config.json` file at the repository root.
+Environment variables take precedence over file values. Defaults are used when neither source is
+provided.
+
+| Name | Default | Description |
+| --- | --- | --- |
+| `TABLE_NAME` | `Inventory` | DynamoDB table used by the Lambda function. |
+| `IOT_TOPIC` | `rfid/scan` | MQTT topic for the IoT simulator publisher. |
+
+Example `config.json`:
+
+```json
+{
+  "TABLE_NAME": "Inventory",
+  "IOT_TOPIC": "rfid/scan"
+}
+```
+
+
 For development and testing, install the additional dependencies:
 
 ```bash

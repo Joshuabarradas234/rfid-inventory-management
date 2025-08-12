@@ -29,6 +29,7 @@ def _get_setting(name: str, default: str) -> str:
 
 IOT_TOPIC = _get_setting("IOT_TOPIC", "rfid/scan")
 
+
 def build_payload() -> dict:
     return {
         "item_id": f"ITEM_{random.randint(1, 999):03d}",
@@ -52,5 +53,7 @@ def main() -> None:
     except Exception as exc:  # pragma: no cover - fallback
         logger.error("Unexpected error publishing payload: %s", exc)
         raise
+
+
 if __name__ == "__main__":
     main()

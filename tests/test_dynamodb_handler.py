@@ -3,17 +3,17 @@ from pathlib import Path
 import types
 import sys
 
-import pytest
 
 class _DummyResource:
     def Table(self, name):  # noqa: D401
         return types.SimpleNamespace()
 
-
-sys.modules.setdefault("boto3", types.SimpleNamespace(resource=lambda service: _DummyResource()))
+sys.modules.setdefault(
+    "boto3", types.SimpleNamespace(resource=lambda service: _DummyResource())
+)
 
 spec = importlib.util.spec_from_file_location(
-    "dynamodb_handler", Path(__file__).resolve().parents[1] / "lambda" / "dynamodb_handler.py"
+     "dynamodb_handler",
 )
 dynamodb_handler = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(dynamodb_handler)

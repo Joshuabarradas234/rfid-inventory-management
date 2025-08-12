@@ -13,6 +13,7 @@ from botocore.exceptions import BotoCoreError, ClientError
 logger = logging.getLogger()
 logger.setLevel(logging.INFO)
 
+
 def _get_setting(name: str, default: str) -> str:
     """Return configuration value from environment or config file."""
     if name in os.environ:
@@ -41,13 +42,13 @@ table = None
 
 def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
     """Validate required fields and store the scan event."""
-   for field in REQUIRED_FIELDS:
+    for field in REQUIRED_FIELDS:
         if field not in event:
             message = f"Missing required field: {field}"
             logger.warning(message)
             return {"statusCode": 400, "body": message}
 
-        # Validate timestamp format
+       # Validate timestamp format
     try:
         datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
  except ValueError as exc:
@@ -55,7 +56,8 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         return {"statusCode": 400, "body": str(exc)}
 
     item = {field: event[field] for field in REQUIRED_FIELDS}
-        global table
+        
+ global table
     if table is None:
         try:
             dynamodb = boto3.resource("dynamodb")
@@ -64,7 +66,7 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             logger.error("Failed to access DynamoDB table: %s", exc)
             return {"statusCode": 500, "body": "Error accessing database"}
 
-    try:   
+ try:
         table.put_item(Item=item)
          logger.info("Successfully stored item %s", item["item_id"])
         return {"statusCode": 200, "body": "Scan recorded"}

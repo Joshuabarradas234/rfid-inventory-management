@@ -195,16 +195,20 @@ rfid-inventory-management/
 
 ## Setup
 
-Install the runtime and test dependencies:
+Install the runtime dependencies:
 
 ```bash
 pip install -r requirements.txt
 ```
 
+For development and testing, install the additional dependencies:
+
+```bash
+pip install -r requirements.txt -r requirements-dev.txt
+```
 ## Running Tests
 
-Unit tests are implemented with [pytest](https://pytest.org). After installing the dependencies, run:
-
+Unit tests are implemented with [pytest](https://pytest.org). After installing the development dependencies, run:
 ```
 pytest
 ```

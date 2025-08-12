@@ -13,7 +13,8 @@ sys.modules.setdefault(
 )
 
 spec = importlib.util.spec_from_file_location(
-     "dynamodb_handler",
+       "dynamodb_handler",
+    Path(__file__).resolve().parents[1] / "lambda" / "dynamodb_handler.py",
 )
 dynamodb_handler = importlib.util.module_from_spec(spec)
 spec.loader.exec_module(dynamodb_handler)

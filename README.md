@@ -78,6 +78,7 @@ The biggest driver is DynamoDB write volume (~$1,500/month at this message rate)
 - **Figure 1:** Full system architecture (RFID → IoT Core → Lambda → DynamoDB → SAP)
 - **Figure 2:** AWS IoT Core and Lambda data pipeline
 - **Figure 3:** Lambda → SAP AII IDoc integration workflow
+- - **Figure 4:** CloudWatch RFID-IoT-Monitoring dashboard — MQTT protocol operations, message processing, and rule execution
 - **Figure 5:** CloudWatch metrics dashboard (IoT throughput, Lambda latency, DynamoDB)
 - **Figure 6:** DynamoDB table schema with item_id, expiry, SAP integration fields
 - **Figure 7:** IoT Core Rule setup (SQL routing to Lambda)

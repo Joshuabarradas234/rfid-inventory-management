@@ -1,5 +1,5 @@
 # RFID Inventory Management System — AWS
-
+![CI](https://github.com/Joshuabarradas234/rfid-inventory-management/actions/workflows/ci.yml/badge.svg)
 ## The Business Problem
 
 Pick n Pay's 40+ retail branches were running on manual barcode scanning — staff with handheld scanners, periodic stock counts, nightly batch syncs to SAP. The system couldn't distinguish whether an item was on the shelf, in the storeroom, or in transit. Stockouts weren't detected until a shelf was already empty and a customer complained.

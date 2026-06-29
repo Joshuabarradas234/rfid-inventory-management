@@ -47,16 +47,15 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             message = f"Missing required field: {field}"
             logger.warning(message)
             return {"statusCode": 400, "body": message}
-            
+
     # Validate timestamp format
     try:
         datetime.fromisoformat(event["timestamp"].replace("Z", "+00:00"))
-          except ValueError as exc:
+    except ValueError as exc:
         logger.warning("Timestamp validation failed: %s", exc)
         return {"statusCode": 400, "body": str(exc)}
 
     item = {field: event[field] for field in REQUIRED_FIELDS}
-
 
     global table
     if table is None:
@@ -67,7 +66,7 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
             logger.error("Failed to access DynamoDB table: %s", exc)
             return {"statusCode": 500, "body": "Error accessing database"}
 
-     try:
+    try:
         table.put_item(Item=item)
         logger.info("Successfully stored item %s", item["item_id"])
         return {"statusCode": 200, "body": "Scan recorded"}
@@ -75,5 +74,5 @@ def lambda_handler(event: Dict[str, Any], context: Any) -> Dict[str, Any]:
         logger.error("DynamoDB put_item failed: %s", exc)
         return {"statusCode": 500, "body": "Error writing to database"}
     except Exception as exc:  # pragma: no cover - fallback
-        logger.exception("Unexpected error writing to DynamoDB")
+        logger.exception("Unexpected error writing to DynamoDB: %s", exc)
         return {"statusCode": 500, "body": str(exc)}

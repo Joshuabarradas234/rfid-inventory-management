@@ -21,6 +21,7 @@ Pick n Pay's 40+ retail branches were running on manual barcode scanning — sta
 | Message throughput | ~500 msg/s | ~950 msg/s |
 | Forecast accuracy | 75–80% | ~92% at peak |
 | ROI payback period | — | 12–14 months |
+*Business outcomes (stockout reduction, sales uplift, forecast accuracy) are from the Pick n Pay branch deployment. Throughput and latency (~950 msg/s, <200ms) were validated using the included iot-simulator under synthetic load.*
 
 ## Architecture
 
@@ -67,9 +68,9 @@ RFID Readers → AWS IoT Core (MQTT: rfid/scan)
 }
 ```
 
-## Monthly Cloud Cost (~£2,000/month at 950 msg/sec)
+## Monthly Cloud Cost (~$2,500/month at 950 msg/sec)
 
-The biggest driver is DynamoDB write volume (~$1,500/month at this message rate). IoT Core messaging is ~$960/month. Lambda is almost noise by comparison. Against the stockout reduction value, cloud ROI payback is 12–14 months total. Full cost model in [DECISION_RECORD.md](./DECISION_RECORD.md).
+The biggest driver is DynamoDB write volume (~$1,500/month at this message rate). IoT Core messaging is ~$960/month. Lambda is almost noise by comparison. Against the stockout-reduction value, cloud ROI payback is 12–14 months total. Full cost model in [DECISION_RECORD.md](./DECISION_RECORD.md).
 
 ## Visual Evidence (Figures 1–13)
 

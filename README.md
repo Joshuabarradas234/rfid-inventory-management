@@ -26,15 +26,7 @@ Pick n Pay's 40+ retail branches were running on manual barcode scanning — sta
 
 ## Architecture
 
-```
-RFID Readers → AWS IoT Core (MQTT: rfid/scan)
-                      ↓ IoT Rules Engine
-               Lambda (process_scan)
-                      ↓              ↓              ↓
-               DynamoDB        SAP AII (IDoc)   SNS (low-stock alert)
-                      ↓
-               QuickSight (analytics)  +  CloudWatch (monitoring)
-```
+![RFID Inventory Management — AWS Architecture](architecture.png)
 
 **Why IoT Core over Kinesis? Why DynamoDB over RDS? Why Lambda over EC2?** Full service selection reasoning is in [DECISION_RECORD.md](./DECISION_RECORD.md).
 

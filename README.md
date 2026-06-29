@@ -21,6 +21,7 @@ Pick n Pay's 40+ retail branches were running on manual barcode scanning — sta
 | Message throughput | ~500 msg/s | ~950 msg/s |
 | Forecast accuracy | 75–80% | ~92% at peak |
 | ROI payback period | — | 12–14 months |
+
 *Business outcomes (stockout reduction, sales uplift, forecast accuracy) are from the Pick n Pay branch deployment. Throughput and latency (~950 msg/s, <200ms) were validated using the included iot-simulator under synthetic load.*
 
 ## Architecture

@@ -127,7 +127,7 @@ SAP integration is mandatory — inventory movements must appear in SAP ERP. The
 2. **IoT Core message ingestion** (~$960/month) — per-message pricing at this scale
 3. **Lambda compute** (~$40/month) — almost noise by comparison
 
-**ROI:** At ~$2,000/month cloud cost against stockout reduction of 20–22% (stockouts were costing significantly more than this in lost sales), ROI payback is 12–14 months on total implementation cost.
+**ROI:** At ~$2,574/month cloud cost against stockout reduction of 20–22% (stockouts were costing significantly more than this in lost sales), ROI payback is 12–14 months on total implementation cost.
 
 ---
 

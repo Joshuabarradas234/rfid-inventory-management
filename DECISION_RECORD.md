@@ -81,7 +81,7 @@ Each RFID scan is an independent event: read → validate → write to DynamoDB 
 Inventory events are key-value: item_id → {location, quantity, last_seen, expiry_date}. The access pattern is: write a scan event, read current state by item_id. No complex joins. DynamoDB's single-digit millisecond response time is important — Lambda needs to update DynamoDB and check stock levels within the scan processing budget to maintain <200ms end-to-end latency. RDS would add connection management overhead and latency. DynamoDB also scales automatically — no instance sizing or connection pool tuning required.
 
 ### SNS over direct Lambda-to-email notifications
-SNS decouples the notification logic from the scan processing Lambda. The scan Lambda publishes to an SNS topic. SNS fans out to email, SMS, or a Slack webhook — whatever ClearPath's operations team uses. If they want to add a new notification channel later, they subscribe to the existing topic without touching the Lambda code. A direct Lambda-to-email approach tightly couples notification logic into scan processing — if the email service is slow or fails, it holds up the scan acknowledgement.
+SNS decouples the notification logic from the scan processing Lambda. The scan Lambda publishes to an SNS topic. SNS fans out to email, SMS, or a Slack webhook — whatever Pick n Pay's operations team uses. If they want to add a new notification channel later, they subscribe to the existing topic without touching the Lambda code. A direct Lambda-to-email approach tightly couples notification logic into scan processing — if the email service is slow or fails, it holds up the scan acknowledgement.
 
 ### QuickSight over custom dashboards (Power BI, Tableau)
 QuickSight integrates natively with DynamoDB and S3. For a retail ops team that doesn't have Tableau licenses or Power BI infrastructure, a managed AWS-native dashboard is the lowest-friction path to "show me which SKUs are trending toward stockout." The trade-off: QuickSight's visualisation options are less rich than Tableau. For basic inventory analytics (stock levels, scan rates, expiry tracking), it's sufficient.
@@ -99,7 +99,7 @@ SAP integration is mandatory — inventory movements must appear in SAP ERP. The
 | **Real-time updates** | Yes (<200ms) ✅ | Yes ✅ | No (5-min batches) ❌ |
 | **Cost at 950 msg/sec** | Moderate | Lower at very high volume | Low cloud cost (high infra cost) |
 | **Reliability (always-on retail)** | High (managed service) ✅ | High ✅ | Risk of on-prem failure ⚠️ |
-| **POPIA compliance** | AWS eu-south-1 compliant ✅ | ✅ | Higher risk (on-prem controls) ⚠️ |
+| **POPIA compliance** | AWS af-south-1 compliant ✅ | ✅ | Higher risk (on-prem controls) ⚠️ |
 | **SAP integration** | Lambda → IDoc ✅ | Lambda → IDoc ✅ | Complex ❌ |
 | **Ops burden** | Low ✅ | Medium ⚠️ | High ❌ |
 
@@ -118,7 +118,7 @@ SAP integration is mandatory — inventory movements must appear in SAP ERP. The
 | SNS (alerts) | $0.50/million publishes | ~10k alerts/month | <$1 |
 | QuickSight | $9/user/month | 5 ops users | $45 |
 | CloudWatch | ~flat | — | $20 |
-| **Cloud total** | | | **~$2,574/month (~£2,000)** |
+| **Cloud total** | | | **~$2,574/month** |
 
 **Hardware (one-time):** RFID tags ($0.05–$0.10 each at bulk), readers ($1,200–$2,500 each). Total implementation: $50k–$200k depending on branch count and tag volume.
 

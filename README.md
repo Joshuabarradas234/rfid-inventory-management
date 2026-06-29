@@ -93,6 +93,7 @@ At 400 branches and 9,500 msg/sec, DynamoDB costs alone reach ~$15,000/month. Th
 
 ```
 rfid-inventory-management/
+├── .github/workflows/  # CI pipeline (lint + pytest)
 ├── lambda/           # process_scan.py, sap_integration.py
 ├── iot-simulator/    # Simulates RFID scan events at load
 ├── infra/            # CloudFormation template
